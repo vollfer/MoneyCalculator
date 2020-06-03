@@ -9,8 +9,30 @@
 import Foundation
 import UIKit
 
+public enum SettingsCellType {
+    case onboarding
+    case restorePurchases
+    case aboutApp
+    case feedback
+
+    var title: String {
+        
+        switch self {
+        case .onboarding:
+            return "sdfwef"
+        case .restorePurchases:
+            return "ds"
+        case .aboutApp:
+            return "sdf"
+        case .feedback:
+            return "fewfw"
+        }
+    }
+}
+
 protocol MainMenuInput: class {
     func performOperation(_ sender: UIButton)
+    func updateView(with settingsTitleText: [SettingsCellType])
 }
 
 class MainMenuPresenter {
@@ -20,6 +42,7 @@ class MainMenuPresenter {
     weak var view: MainMenuInput?
     var router: MainMenuRouterInput?
     private var accumulator: Double?
+    
     var result: Double? {
         get {
             return accumulator
@@ -54,8 +77,10 @@ class MainMenuPresenter {
 
 // MARK: - MainMenuPresener
 extension MainMenuPresenter: MainMenuViewOutput {
+
     func viewIsReady() {
-        
+        let settingsTitleText: [SettingsCellType] = [.onboarding, .restorePurchases, .aboutApp, .feedback]
+        view?.updateView(with: settingsTitleText)
     }
     
     func setOperand ( _ operand: Double) {
@@ -82,4 +107,12 @@ extension MainMenuPresenter: MainMenuViewOutput {
             }
         }
     }
+}
+
+extension MainMenuPresenter: SettingsTableViewCellDelegat {
+    func didSelectCell(with type: SettingsCellType) {
+        
+    }
+    
+    
 }

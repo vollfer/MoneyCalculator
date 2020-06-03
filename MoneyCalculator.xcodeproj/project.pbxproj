@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12569DEC2487C81500263EA4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12569DEB2487C81500263EA4 /* Model.swift */; };
 		128CC0252462F5D70068D5B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128CC0242462F5D70068D5B1 /* AppDelegate.swift */; };
 		128CC02E2462F5D70068D5B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128CC02D2462F5D70068D5B1 /* Assets.xcassets */; };
 		128CC0312462F5D70068D5B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 128CC02F2462F5D70068D5B1 /* LaunchScreen.storyboard */; };
@@ -18,9 +19,12 @@
 		128CC04C2464534F0068D5B1 /* MainMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128CC04B2464534F0068D5B1 /* MainMenuRouter.swift */; };
 		128CC04E246453600068D5B1 /* MainMenuAssemble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128CC04D246453600068D5B1 /* MainMenuAssemble.swift */; };
 		128CC055246465750068D5B1 /* CompositionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128CC054246465750068D5B1 /* CompositionFactory.swift */; };
+		12DF4625247D7D800073534B /* MainMenuViewTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DF4624247D7D800073534B /* MainMenuViewTableViewManager.swift */; };
+		12DF4627247EAD870073534B /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DF4626247EAD870073534B /* cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12569DEB2487C81500263EA4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		128CC0212462F5D60068D5B1 /* MoneyCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		128CC0242462F5D70068D5B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		128CC02D2462F5D70068D5B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,6 +38,8 @@
 		128CC04B2464534F0068D5B1 /* MainMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuRouter.swift; sourceTree = "<group>"; };
 		128CC04D246453600068D5B1 /* MainMenuAssemble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuAssemble.swift; sourceTree = "<group>"; };
 		128CC054246465750068D5B1 /* CompositionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionFactory.swift; sourceTree = "<group>"; };
+		12DF4624247D7D800073534B /* MainMenuViewTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewTableViewManager.swift; sourceTree = "<group>"; };
+		12DF4626247EAD870073534B /* cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				128CC045246440B50068D5B1 /* MainMenuView.swift */,
+				12DF4624247D7D800073534B /* MainMenuViewTableViewManager.swift */,
+				12DF4626247EAD870073534B /* cell.swift */,
+				12569DEB2487C81500263EA4 /* Model.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,6 +243,9 @@
 			files = (
 				128CC046246440B50068D5B1 /* MainMenuView.swift in Sources */,
 				128CC0252462F5D70068D5B1 /* AppDelegate.swift in Sources */,
+				12DF4627247EAD870073534B /* cell.swift in Sources */,
+				12569DEC2487C81500263EA4 /* Model.swift in Sources */,
+				12DF4625247D7D800073534B /* MainMenuViewTableViewManager.swift in Sources */,
 				128CC04C2464534F0068D5B1 /* MainMenuRouter.swift in Sources */,
 				128CC03E24643F680068D5B1 /* Assemble.swift in Sources */,
 				128CC048246442890068D5B1 /* ViewOutput.swift in Sources */,
