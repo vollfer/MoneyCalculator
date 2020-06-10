@@ -21,6 +21,7 @@ class MainMenuViewController: UIViewController {
     //MARK: - Properties
     
     var presenter: MainMenuViewOutput?
+    var settingsViewTableViewManager: SettingsViewTableViewManagerInput?
     
     let entryField = UILabel()
     var dataSet = false
@@ -38,7 +39,7 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.setToolbarHidden(false, animated: true)
+        //navigationController?.setToolbarHidden(false, animated: true)
         
         view.backgroundColor = .white
         drawSelf()
@@ -46,29 +47,27 @@ class MainMenuViewController: UIViewController {
     
     func drawSelf() {
         
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         title = "Pacходы"
         
-        entryField.translatesAutoresizingMaskIntoConstraints = false
         entryField.backgroundColor = .white
         entryField.text = "Введите сумму"
         entryField.textAlignment = .right
         
-        let stack1 = UIStackView()
-        stack1.axis = .horizontal
-        stack1.spacing = 5
-        let stack2 = UIStackView()
-        stack2.axis = .horizontal
-        stack2.spacing = 5
-        let stack3 = UIStackView()
-        stack3.axis = .horizontal
-        stack3.spacing = 5
-        let stack4 = UIStackView()
-        stack4.axis = .horizontal
-        stack4.spacing = 5
-        let stackAllButton = UIStackView(arrangedSubviews: [entryField, stack1, stack2, stack3, stack4])
+        
+        let stackAllButton = UIStackView(arrangedSubviews: [entryField])
         stackAllButton.axis = .vertical
         stackAllButton.alignment = .center
         stackAllButton.spacing = 5
+        
+        for _ in 1...4{
+            let stack = UIStackView()
+            stack.axis = .horizontal
+            stack.spacing = 5
+            stackAllButton.addArrangedSubview(stack)
+        }
         
         for index in 1...16 {
             
@@ -82,81 +81,34 @@ class MainMenuViewController: UIViewController {
                 return but
             }()
             
-           // button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-            
             button.tag = index
-            
-            //MARK: - потом нужно будет исправить все повторения.
-            
-            switch index {
-            case 1...4:
-                stack1.addArrangedSubview(button)
-                if button.tag == 4{
-                    button.setTitle("+", for: .normal)
-                    button.addTarget(self, action: #selector(performOperation), for: .touchUpInside)
-                } else {
-                    button.setTitle("\(index)", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                }
-            case 5...8:
-                stack2.addArrangedSubview(button)
-                if button.tag == 8{
-                    button.setTitle("-", for: .normal)
-                    button.addTarget(self, action: #selector(performOperation), for: .touchUpInside)
-                } else if button.tag == 5 {
-                    button.setTitle("4", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                } else if button.tag == 6 {
-                    button.setTitle("5", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                } else if button.tag == 7 {
-                    button.setTitle("6", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                }
-            case 9...12:
-                stack3.addArrangedSubview(button)
-                if button.tag == 9 {
-                    button.setTitle("7", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                } else if button.tag == 10 {
-                    button.setTitle("8", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                } else if button.tag == 11 {
-                    button.setTitle("9", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                } else if button.tag == 12 {
-                    button.setTitle("x", for: .normal)
-                    button.addTarget(self, action: #selector(performOperation), for: .touchUpInside)
-                }
-            case 13...16:
-                stack4.addArrangedSubview(button)
-                if button.tag == 13 {
-                    button.setTitle("=", for: .normal)
-                    button.addTarget(self, action: #selector(performOperation), for: .touchUpInside)
-                } else if button.tag == 14 {
-                    button.setTitle("0", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                } else if button.tag == 15 {
-                    button.setTitle(".", for: .normal)
-                    button.addTarget(self, action: #selector(touchDigit), for: .touchUpInside)
-                } else if button.tag == 16 {
-                    button.setTitle("/", for: .normal)
-                    button.addTarget(self, action: #selector(performOperation), for: .touchUpInside)
-                }
-            default:
-                break
-            }
+            guard let buttonType = Type(rawValue: index) else {return}
+            button.setTitle(buttonType.title, for: .normal)
+            button.addTarget(self, action: buttonType.selector, for: .touchUpInside)
+            (stackAllButton.arrangedSubviews[buttonType.parentStackTag] as? UIStackView)?.addArrangedSubview(button)
         }
         
         stackAllButton.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(stackAllButton)
+        //  view.addSubview(tableView)
+        
         
         NSLayoutConstraint.activate([
             stackAllButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackAllButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             stackAllButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            stackAllButton.bottomAnchor.constraint(equalTo: view.centerYAnchor)
+            
+            //            tableView.topAnchor.constraint(equalTo: stackAllButton.bottomAnchor, constant: 100),
+            //            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            //            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            //            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        settingsViewTableViewManager?.setup(tableView: tableView)
+        // tableView.tableFooterView = UIView()
+        presenter?.viewIsReady()
         
     }
     
@@ -178,6 +130,10 @@ class MainMenuViewController: UIViewController {
 
 // MARK: - MainMenuViewInput
 extension MainMenuViewController: MainMenuInput {
+    
+    func updateView(with settingsTitleText: [SettingsCellType]) {
+        settingsViewTableViewManager?.update(with: settingsTitleText)
+    }
     
     @objc func performOperation(_ sender: UIButton) {
         if dataSet {
