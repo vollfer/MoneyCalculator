@@ -8,34 +8,34 @@
 
 import UIKit
 
-protocol SettingsViewTableViewManagerInput {
+protocol CostViewTableViewManagerInput {
     func setup(tableView: UITableView)
-    func update(with settingsTitleText: [SettingsCellType])
+    func update(with settingsTitleText: [CostCellType])
     func reloadData()
 }
 
-final class SettingsViewTableViewManager: NSObject {
+final class CostViewTableViewManager: NSObject {
     
-    private weak var cellDelegate: SettingsTableViewCellDelegat?
+    //private weak var cellDelegate: SettingsTableViewCellDelegat?
     private weak var tableView: UITableView?
     
-    var settingsTitleText: [SettingsCellType] = []
+    var costTitleText: [CostCellType] = []
     
-    init(cellDelegate: SettingsTableViewCellDelegat) {
-        self.cellDelegate = cellDelegate
-    }
+//    init(cellDelegate: SettingsTableViewCellDelegat) {
+//        self.cellDelegate = cellDelegate
+//    }
 }
 
 // MARK: - SettingsViewTableViewManagerInput
 
-extension SettingsViewTableViewManager: SettingsViewTableViewManagerInput {
+extension CostViewTableViewManager: CostViewTableViewManagerInput {
     
     func reloadData() {
         tableView?.reloadData()
     }
     
-    func update(with settingsTitleText: [SettingsCellType]) {
-        self.settingsTitleText = settingsTitleText
+    func update(with settingsTitleText: [CostCellType]) {
+        self.costTitleText = settingsTitleText
         tableView?.reloadData()
     }
     
@@ -50,18 +50,18 @@ extension SettingsViewTableViewManager: SettingsViewTableViewManagerInput {
     }
 }
 
-extension SettingsViewTableViewManager: UITableViewDataSource{
+extension CostViewTableViewManager: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsTitleText.count
+        return costTitleText.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath)
-        let cellType = settingsTitleText[indexPath.row]
+        let cellType = costTitleText[indexPath.row]
         
-        (cell as? SettingsTableViewCell)?.delegat = cellDelegate
-        (cell as? SettingsTableViewCell)?.cellType = cellType
+//        (cell as? SettingsTableViewCell)?.delegat = cellDelegate
+//        (cell as? SettingsTableViewCell)?.cellType = cellType
         
         cell.textLabel?.text = cellType.title
         
@@ -69,7 +69,7 @@ extension SettingsViewTableViewManager: UITableViewDataSource{
     }
 }
 
-extension SettingsViewTableViewManager: UITableViewDelegate {
+extension CostViewTableViewManager: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

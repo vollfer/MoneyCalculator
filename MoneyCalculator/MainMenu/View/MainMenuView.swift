@@ -21,7 +21,7 @@ class MainMenuViewController: UIViewController {
     //MARK: - Properties
     
     var presenter: MainMenuViewOutput?
-    var settingsViewTableViewManager: SettingsViewTableViewManagerInput?
+    var settingsViewTableViewManager: CostViewTableViewManagerInput?
     
     let entryField = UILabel()
     var dataSet = false
@@ -91,19 +91,19 @@ class MainMenuViewController: UIViewController {
         stackAllButton.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(stackAllButton)
-        //  view.addSubview(tableView)
+        view.addSubview(tableView)
         
         
         NSLayoutConstraint.activate([
             stackAllButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackAllButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             stackAllButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            stackAllButton.bottomAnchor.constraint(equalTo: view.centerYAnchor)
+            stackAllButton.bottomAnchor.constraint(equalTo: view.centerYAnchor),
             
-            //            tableView.topAnchor.constraint(equalTo: stackAllButton.bottomAnchor, constant: 100),
-            //            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            //            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            //            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: stackAllButton.bottomAnchor, constant: 100),
+            tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
         settingsViewTableViewManager?.setup(tableView: tableView)
@@ -131,7 +131,7 @@ class MainMenuViewController: UIViewController {
 // MARK: - MainMenuViewInput
 extension MainMenuViewController: MainMenuInput {
     
-    func updateView(with settingsTitleText: [SettingsCellType]) {
+    func updateView(with settingsTitleText: [CostCellType]) {
         settingsViewTableViewManager?.update(with: settingsTitleText)
     }
     

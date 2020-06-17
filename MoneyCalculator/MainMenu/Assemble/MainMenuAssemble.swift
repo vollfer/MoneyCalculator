@@ -15,7 +15,7 @@ final class MainMenuAssemble: Assembly {
         let module = MainMenuViewController()
         let presenter = MainMenuPresenter()
         let router = MainMenuRouter(transition: module)
-        let settingsViewTableViewManager = SettingsViewTableViewManager(cellDelegate: presenter)
+        let settingsViewTableViewManager = CostViewTableViewManager()
 
 
         module.presenter = presenter
