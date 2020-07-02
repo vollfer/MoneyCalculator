@@ -9,27 +9,12 @@
 import UIKit
 
 protocol SettingsTableViewCellDelegat: class {
-    func didSelectCell(with type: SettingsCellType)
+    func didSelectCell(with type: CostCellType)
 }
 
 final class SettingsTableViewCell: UITableViewCell {
     weak var delegat: SettingsTableViewCellDelegat?
-    var cellType: SettingsCellType? {
-        didSet {
-            switch cellType {
-            case .onboarding:
-                accessoryType = .none
-            case .restorePurchases:
-                accessoryType = .disclosureIndicator
-            case .aboutApp:
-                accessoryType = .disclosureIndicator
-            case .feedback:
-                accessoryType = .none
-            case .none:
-                break
-            }
-        }
-    }
+    var cellType: CostCellType?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

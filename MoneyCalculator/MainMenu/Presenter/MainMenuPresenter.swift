@@ -9,30 +9,21 @@
 import Foundation
 import UIKit
 
-public enum SettingsCellType {
-    case onboarding
-    case restorePurchases
-    case aboutApp
-    case feedback
+public enum CostCellType {
+    case fsd
 
     var title: String {
         
         switch self {
-        case .onboarding:
+        case .fsd:
             return "sdfwef"
-        case .restorePurchases:
-            return "ds"
-        case .aboutApp:
-            return "sdf"
-        case .feedback:
-            return "fewfw"
         }
     }
 }
 
 protocol MainMenuInput: class {
     func performOperation(_ sender: UIButton)
-    func updateView(with settingsTitleText: [SettingsCellType])
+    func updateView(with settingsTitleText: [CostCellType])
 }
 
 class MainMenuPresenter {
@@ -79,7 +70,7 @@ class MainMenuPresenter {
 extension MainMenuPresenter: MainMenuViewOutput {
 
     func viewIsReady() {
-        let settingsTitleText: [SettingsCellType] = [.onboarding, .restorePurchases, .aboutApp, .feedback]
+        let settingsTitleText: [CostCellType] = [.fsd]
         view?.updateView(with: settingsTitleText)
     }
     
@@ -110,7 +101,7 @@ extension MainMenuPresenter: MainMenuViewOutput {
 }
 
 extension MainMenuPresenter: SettingsTableViewCellDelegat {
-    func didSelectCell(with type: SettingsCellType) {
+    func didSelectCell(with type: CostCellType) {
         
     }
     

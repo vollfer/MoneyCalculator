@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12569DEC2487C81500263EA4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12569DEB2487C81500263EA4 /* Model.swift */; };
+		126F9746249140A200042D9F /* TablMoney.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 126F9744249140A200042D9F /* TablMoney.xcdatamodeld */; };
 		128CC0252462F5D70068D5B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128CC0242462F5D70068D5B1 /* AppDelegate.swift */; };
 		128CC02E2462F5D70068D5B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128CC02D2462F5D70068D5B1 /* Assets.xcassets */; };
 		128CC0312462F5D70068D5B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 128CC02F2462F5D70068D5B1 /* LaunchScreen.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		12569DEB2487C81500263EA4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		126F9745249140A200042D9F /* TablMoney.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TablMoney.xcdatamodel; sourceTree = "<group>"; };
 		128CC0212462F5D60068D5B1 /* MoneyCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		128CC0242462F5D70068D5B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		128CC02D2462F5D70068D5B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				128CC03824643DF50068D5B1 /* AppDelegate */,
 				128CC02D2462F5D70068D5B1 /* Assets.xcassets */,
 				128CC02F2462F5D70068D5B1 /* LaunchScreen.storyboard */,
+				126F9744249140A200042D9F /* TablMoney.xcdatamodeld */,
 				128CC0322462F5D70068D5B1 /* Info.plist */,
 			);
 			path = MoneyCalculator;
@@ -247,6 +250,7 @@
 				12569DEC2487C81500263EA4 /* Model.swift in Sources */,
 				12DF4625247D7D800073534B /* MainMenuViewTableViewManager.swift in Sources */,
 				128CC04C2464534F0068D5B1 /* MainMenuRouter.swift in Sources */,
+				126F9746249140A200042D9F /* TablMoney.xcdatamodeld in Sources */,
 				128CC03E24643F680068D5B1 /* Assemble.swift in Sources */,
 				128CC048246442890068D5B1 /* ViewOutput.swift in Sources */,
 				128CC055246465750068D5B1 /* CompositionFactory.swift in Sources */,
@@ -442,6 +446,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		126F9744249140A200042D9F /* TablMoney.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				126F9745249140A200042D9F /* TablMoney.xcdatamodel */,
+			);
+			currentVersion = 126F9745249140A200042D9F /* TablMoney.xcdatamodel */;
+			path = TablMoney.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 128CC0192462F5D60068D5B1 /* Project object */;
 }
