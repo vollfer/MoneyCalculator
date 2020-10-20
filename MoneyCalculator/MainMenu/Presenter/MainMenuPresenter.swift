@@ -26,7 +26,7 @@ protocol MainMenuInput: class {
     func updateView(with settingsTitleText: [CostCellType])
 }
 
-class MainMenuPresenter {
+final class MainMenuPresenter {
     
     //MARK: - Properties
     

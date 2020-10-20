@@ -12,7 +12,7 @@ protocol  MainMenuRouterInput {
     
 }
 
-class MainMenuRouter {
+final class MainMenuRouter {
     
     //MARK: - Properties
     

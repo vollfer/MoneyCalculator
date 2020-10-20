@@ -16,13 +16,20 @@ protocol MainMenuViewOutput: ViewOutput {
     var result: Double? {get}
     }
 
-class MainMenuViewController: UIViewController {
+final class MainMenuViewController: UIViewController {
     
     //MARK: - Properties
     
     var presenter: MainMenuViewOutput?
     var settingsViewTableViewManager: CostViewTableViewManagerInput?
     
+    let cash: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.black, for: .normal)
+        button.setTitle("0", for: .normal)
+        return button
+    }()
     let entryField = UILabel()
     var dataSet = false
     var displayValue: Double {
@@ -90,12 +97,20 @@ class MainMenuViewController: UIViewController {
         
         stackAllButton.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(cash)
         view.addSubview(stackAllButton)
         view.addSubview(tableView)
         
         
         NSLayoutConstraint.activate([
-            stackAllButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            
+            cash.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            cash.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            cash.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            
+           // cash.bottomAnchor.constraint(equalTo: view.)
+            
+            stackAllButton.topAnchor.constraint(equalTo: cash.bottomAnchor),
             stackAllButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             stackAllButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             stackAllButton.bottomAnchor.constraint(equalTo: view.centerYAnchor),
